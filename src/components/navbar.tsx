@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import logo from "../../public/logo.svg";
+import SocialLinks from "./social-links";
 
 const Navbar = () => {
     return (
@@ -9,10 +10,7 @@ const Navbar = () => {
                     <img src={logo} alt="Logo" className="h-6 w-6" />
                     <span>Gaurav Singh</span>
                 </Link>
-                <div className="flex items-center gap-8 font-mono tracking-tighter">
-                    <Link to={"/"}>Home</Link>
-                    <Link to={"/about"}>About</Link>
-                </div>
+                <SocialLinks />
             </div>
         </nav>
     );
