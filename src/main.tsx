@@ -4,8 +4,15 @@ import { BrowserRouter } from "react-router";
 import "./index.css";
 import App from "./app";
 
+const getBasename = () => {
+    if (typeof window !== "undefined" && window.location.pathname.startsWith("/grvsnh.dev")) {
+        return "/grvsnh.dev";
+    }
+    return "/";
+};
+
 createRoot(document.getElementById("root")!).render(
-    <BrowserRouter>
+    <BrowserRouter basename={getBasename()}>
         <StrictMode>
             <App />
         </StrictMode>
