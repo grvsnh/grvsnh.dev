@@ -1,6 +1,5 @@
 import { ChevronsRight } from "lucide-react";
 import { Link } from "react-router";
-import SocialLinks from "@/components/social-links";
 
 const Home = () => {
     return (
@@ -18,7 +17,6 @@ const Home = () => {
                             View my portfolio
                             <ChevronsRight size={24} strokeWidth={1.5} />
                         </Link>
-                        <SocialLinks />
                     </div>
                 </div>
             </div>
