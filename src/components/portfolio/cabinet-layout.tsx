@@ -3,10 +3,7 @@ import EducationFile from "./cabinet-files/education-file";
 import CertificationsFile from "./cabinet-files/certifications-file";
 import InternshipFile from "@/components/portfolio/cabinet-files/internship-file";
 import SkillsFile from "./cabinet-files/skills-file";
-import AielyFile from "./cabinet-files/aiely-file";
-import BrainScanFile from "./cabinet-files/brainscan-file";
-import F1File from "./cabinet-files/f1-file";
-import PhotoBoothFile from "./cabinet-files/photobooth-file";
+import ProjectsFile from "./cabinet-files/projects-file";
 
 export type File = {
     tabLocation: 0 | 1 | 2;
@@ -31,7 +28,7 @@ const cabinetLayout: File[] = [
     },
     {
         tabLocation: 2,
-        title: "Experience - Web Dev Intern",
+        title: "Experience",
         content: <InternshipFile />,
     },
     {
@@ -41,23 +38,8 @@ const cabinetLayout: File[] = [
     },
     {
         tabLocation: 2,
-        title: "Project - Aiely AI",
-        content: <AielyFile />,
-    },
-    {
-        tabLocation: 2,
-        title: "Project - BrainScan",
-        content: <BrainScanFile />,
-    },
-    {
-        tabLocation: 2,
-        title: "Project - F1 Strategy",
-        content: <F1File />,
-    },
-    {
-        tabLocation: 2,
-        title: "Project - PhotoBooth",
-        content: <PhotoBoothFile />,
+        title: "Projects",
+        content: <ProjectsFile />,
     },
 ];
 
