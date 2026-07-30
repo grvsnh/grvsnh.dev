@@ -6,7 +6,7 @@ const AielyFile = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>Aiely AI</FileTitle>
+                    <FileTitle>Project - Aiely AI</FileTitle>
                     <FileCaption>Electron • OpenRouter</FileCaption>
                 </FileHeader>
                 <FileText>

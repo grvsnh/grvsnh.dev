@@ -6,7 +6,7 @@ const BrainScanFile = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>BrainScan</FileTitle>
+                    <FileTitle>Project - BrainScan</FileTitle>
                     <FileCaption>TensorFlow.js • WebGL</FileCaption>
                 </FileHeader>
                 <FileText>

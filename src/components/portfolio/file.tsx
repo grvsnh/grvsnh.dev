@@ -33,43 +33,66 @@ type Props = {
     children: React.ReactNode;
 };
 
-const File = ({ tabLocation, title, children, index, docNumber }: Props) => {
+const File = ({ tabLocation, title, children, index }: Props) => {
     const isMobile = useIsMobile();
     const browserEngine = useBrowserEngine();
     const [dragY, setDragY] = React.useState(0);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const isDraggingRef = React.useRef(false);
 
     const tabOffsetClass = TAB_OFFSETS[tabLocation] ?? TAB_OFFSETS[0];
     const dragConfig = getDragOptions(browserEngine === "chromium", isMobile);
 
+    const openY = dragConfig.dragConstraintTop;
+    const isPulled = isOpen || dragY < -10;
+
     // for 3d effect, when selecting a file however, face user straight on
-    const rotation = dragY < 0 ? 0 : dragConfig.rotationAngle;
+    const rotation = isPulled ? 0 : dragConfig.rotationAngle;
 
     // add offset to counteract the file appearing to move up when it rotates
-    const yOffset = dragY < 0 ? dragConfig.rotationYOffset : 0;
+    const yOffset = isPulled ? dragConfig.rotationYOffset : 0;
 
-    // on mobile, apply dragSpeedMultiplier
-    const translateY = isMobile
-        ? `${dragY * dragConfig.dragSpeedMultiplier + yOffset}px`
-        : `${yOffset}px`;
+    const handleTabClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (isDraggingRef.current) return;
+        setIsOpen((prev) => !prev);
+    };
 
     return (
         <div className="perspective-[1000px]">
             <motion.div
                 drag="y"
-                dragConstraints={{ top: dragConfig.dragConstraintTop, bottom: 0 }}
+                dragConstraints={{ top: openY, bottom: 0 }}
                 dragElastic={dragConfig.dragElastic}
                 dragTransition={{
                     bounceStiffness: 500,
                 }}
                 dragMomentum={dragConfig.dragMomentum}
+                animate={{
+                    y: isDraggingRef.current ? undefined : isOpen ? openY : 0,
+                }}
+                transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                onDragStart={() => {
+                    isDraggingRef.current = true;
+                }}
+                onDragEnd={(_, info) => {
+                    setTimeout(() => {
+                        isDraggingRef.current = false;
+                    }, 100);
+                    if (info.offset.y < openY / 2 || info.velocity.y < -100) {
+                        setIsOpen(true);
+                    } else if (info.offset.y > openY / 2 || info.velocity.y > 100) {
+                        setIsOpen(false);
+                    }
+                }}
                 onUpdate={(latest) => setDragY((latest.y as number) || 0)}
                 className={cn(
-                    "bg-background relative flex h-[400px] w-[700px] flex-col rounded-lg border p-6 select-text",
-                    dragY < 0 && "scale-[114%]",
+                    "bg-background relative flex h-[400px] w-[700px] flex-col rounded-lg border border-black dark:border-white p-6 select-text shadow-sm",
+                    isPulled && "scale-[114%]",
                 )}
                 style={{
                     translateZ: `${index * 2}px`,
-                    translateY,
+                    translateY: `${yOffset}px`,
                     rotateX: rotation,
                     transformStyle: "preserve-3d",
                 }}
@@ -78,24 +101,24 @@ const File = ({ tabLocation, title, children, index, docNumber }: Props) => {
                     className={cn(
                         "absolute -top-[37.5px]",
                         tabOffsetClass,
-                        dragY < 0 && "pt-[2.5px]",
+                        isPulled && "pt-[2.5px]",
                     )}
                     style={{
                         rotateX: -rotation,
                         transformStyle: "preserve-3d",
                     }}
+                    onClick={handleTabClick}
                 >
                     <div className="relative flex h-full w-full cursor-pointer items-center justify-center select-none">
                         <img
                             src={tab}
-                            className="w-[200px]"
+                            className="w-[200px] dark:invert dark:hue-rotate-180"
                             draggable={false}
                         />
                         <div
-                            className="absolute flex w-[155px] items-center text-xs sm:text-[0.875rem] tracking-tight justify-between text-black font-medium"
+                            className="absolute flex w-[155px] items-center text-xs sm:text-[0.875rem] tracking-tight justify-center text-black dark:text-white font-medium"
                         >
-                            <p className="font-mono font-semibold shrink-0">{String(docNumber ?? index + 1).padStart(2, "0")}</p>
-                            <p className="truncate ml-1.5 font-medium">{title}</p>
+                            <p className="truncate font-medium">{title}</p>
                         </div>
                     </div>
                 </motion.div>

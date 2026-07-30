@@ -14,7 +14,7 @@ const UniversityFile = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>University</FileTitle>
+                    <FileTitle>Education - University</FileTitle>
                     <FileCaption>2023 – 2027</FileCaption>
                 </FileHeader>
                 <FileText>

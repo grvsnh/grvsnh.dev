@@ -6,7 +6,7 @@ const F1File = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>F1 Strategy Lab</FileTitle>
+                    <FileTitle>Project - F1 Strategy Lab</FileTitle>
                     <FileCaption>Next.js • FastAPI • Plotly</FileCaption>
                 </FileHeader>
                 <FileText>

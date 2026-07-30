@@ -6,7 +6,7 @@ const PhotoBoothFile = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>PhotoBooth</FileTitle>
+                    <FileTitle>Project - PhotoBooth</FileTitle>
                     <FileCaption>Three.js • GSAP • WebRTC</FileCaption>
                 </FileHeader>
                 <FileText>

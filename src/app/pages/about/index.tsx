@@ -1,5 +1,4 @@
 import cabinet from "@/assets/images/cabinet/cabinet.png";
-import blackTab from "@/assets/images/cabinet/tab-black.png";
 import tab from "@/assets/images/cabinet/tab.png";
 import { useImagePreloader } from "@/hooks/use-image-preloader";
 import { ArrowBigDown, Loader2 } from "lucide-react";
@@ -7,7 +6,7 @@ import { useMemo } from "react";
 import Cabinet from "../../../components/portfolio/cabinet";
 
 const About = () => {
-    const imageUrls = useMemo(() => [cabinet, tab, blackTab], []);
+    const imageUrls = useMemo(() => [cabinet, tab], []);
 
     // preload images to prevent strange appearance when images haven't loaded yet
     const imagesLoaded = useImagePreloader(imageUrls);
@@ -27,7 +26,7 @@ const About = () => {
                 <div className="absolute bottom-[800px]">
                     <div className="flex scale-[200%] items-center gap-3 lg:scale-[100%]">
                         <p className="font-mono text-lg tracking-tighter">
-                            Click and drag on a tab
+                            Click or drag a tab
                         </p>
                         <ArrowBigDown />
                     </div>

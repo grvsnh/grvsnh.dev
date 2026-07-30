@@ -23,17 +23,17 @@ export const loremIpsum =
 const cabinetLayout: File[] = [
     {
         tabLocation: 2,
-        title: "University",
+        title: "Education - University",
         content: <UniversityFile />,
     },
     {
         tabLocation: 2,
-        title: "Senior High (XII)",
+        title: "Education - Senior High",
         content: <HighSchoolXIIFile />,
     },
     {
         tabLocation: 2,
-        title: "Secondary (X)",
+        title: "Education - Secondary",
         content: <HighSchoolXFile />,
     },
     {
@@ -43,7 +43,7 @@ const cabinetLayout: File[] = [
     },
     {
         tabLocation: 2,
-        title: "Web Dev Intern",
+        title: "Experience - Web Dev Intern",
         content: <InternshipFile />,
     },
     {
@@ -53,22 +53,22 @@ const cabinetLayout: File[] = [
     },
     {
         tabLocation: 2,
-        title: "Aiely AI",
+        title: "Project - Aiely AI",
         content: <AielyFile />,
     },
     {
         tabLocation: 2,
-        title: "BrainScan",
+        title: "Project - BrainScan",
         content: <BrainScanFile />,
     },
     {
         tabLocation: 2,
-        title: "F1 Strategy",
+        title: "Project - F1 Strategy",
         content: <F1File />,
     },
     {
         tabLocation: 2,
-        title: "PhotoBooth",
+        title: "Project - PhotoBooth",
         content: <PhotoBoothFile />,
     },
 ];

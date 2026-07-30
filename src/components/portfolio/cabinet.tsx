@@ -4,16 +4,10 @@ import cabinetLayout from "./cabinet-layout";
 import cabinetImg from "@/assets/images/cabinet/cabinet.png";
 
 const Cabinet = () => {
-    let docCounter = 0;
     return (
         <>
             <motion.div className="flex flex-col items-center space-y-[-366px] px-16 [clip-path:inset(-1000px_0_360px_0)] md:pt-[30vh]">
                 {cabinetLayout.map((file, i) => {
-                    let docNumber: number | undefined = undefined;
-                    if (!file.isDivider) {
-                        docCounter++;
-                        docNumber = docCounter;
-                    }
                     return (
                         <File
                             key={i}
@@ -21,7 +15,6 @@ const Cabinet = () => {
                             tabLocation={file.tabLocation}
                             isDivider={file.isDivider}
                             index={i}
-                            docNumber={docNumber}
                         >
                             {file.content}
                         </File>
@@ -42,11 +35,11 @@ const Cabinet = () => {
                     <div className="w-[930px]">
                         <img
                             src={cabinetImg}
-                            className="h-auto w-full select-none"
+                            className="h-auto w-full select-none dark:invert dark:hue-rotate-180"
                             draggable={false}
                         />
                     </div>
-                    <div className="absolute top-14 font-mono text-base font-semibold">
+                    <div className="absolute top-14 font-mono text-base font-semibold text-foreground">
                         Gaurav Singh
                     </div>
                 </div>

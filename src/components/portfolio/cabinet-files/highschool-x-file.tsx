@@ -14,7 +14,7 @@ const HighSchoolXFile = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>Secondary School (Class X)</FileTitle>
+                    <FileTitle>Education - Secondary</FileTitle>
                     <FileCaption>2018 – 2020</FileCaption>
                 </FileHeader>
                 <FileText>

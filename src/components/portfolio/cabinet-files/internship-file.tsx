@@ -14,7 +14,7 @@ const InternshipFile = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>Web Developer Intern</FileTitle>
+                    <FileTitle>Experience - Web Dev Intern</FileTitle>
                     <FileCaption>Sep – Oct 2025</FileCaption>
                 </FileHeader>
                 <FileText>

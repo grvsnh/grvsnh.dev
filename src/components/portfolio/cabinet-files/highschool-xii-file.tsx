@@ -14,7 +14,7 @@ const HighSchoolXIIFile = () => {
         <FileContent>
             <FileInfo>
                 <FileHeader>
-                    <FileTitle>Senior High School (Class XII)</FileTitle>
+                    <FileTitle>Education - Senior High</FileTitle>
                     <FileCaption>2020 – 2022</FileCaption>
                 </FileHeader>
                 <FileText>

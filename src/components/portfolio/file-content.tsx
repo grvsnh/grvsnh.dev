@@ -25,7 +25,7 @@ const FileContent = ({ className, isDivider = false, children, ...props }: FileC
     return (
         <div
             className={cn(
-                "relative flex h-full gap-5 rounded-lg border bg-white/30 p-4 sm:p-5 select-text overflow-hidden",
+                "relative flex h-full gap-5 rounded-lg border border-black/30 dark:border-white/30 bg-card/40 p-4 sm:p-5 select-text overflow-hidden",
                 className,
             )}
             onPointerDownCapture={handlePointerDownCapture}
@@ -48,7 +48,7 @@ const FileHeader = ({ className, ...props }: React.ComponentProps<"div">) => {
 const FileTitle = ({ className, ...props }: React.ComponentProps<"div">) => {
     return (
         <div
-            className={cn("font-mono text-base sm:text-lg font-bold tracking-tight", className)}
+            className={cn("font-mono text-base sm:text-lg font-bold tracking-tight text-foreground", className)}
             {...props}
         />
     );
@@ -57,7 +57,7 @@ const FileTitle = ({ className, ...props }: React.ComponentProps<"div">) => {
 const FileCaption = ({ className, ...props }: React.ComponentProps<"div">) => {
     return (
         <div
-            className={cn("rounded-xs border px-1.5 py-0.5 font-mono text-[11px] font-medium bg-background/50", className)}
+            className={cn("rounded-xs border border-black/30 dark:border-white/30 px-1.5 py-0.5 font-mono text-[11px] font-medium bg-background/50 text-muted-foreground", className)}
             {...props}
         />
     );
@@ -69,9 +69,9 @@ const FileText = ({ className, ...props }: React.ComponentProps<"div">) => {
 
 const FileImage = ({ className, ...props }: React.ComponentProps<"div">) => {
     return (
-        <div className="h-[140px] w-[180px] shrink-0 -rotate-[2deg] rounded-md border bg-zinc-100/90 p-2 shadow-xs flex items-center justify-center self-start overflow-hidden">
+        <div className="h-[140px] w-[180px] shrink-0 -rotate-[2deg] rounded-md border border-black/40 dark:border-white/40 bg-muted/80 dark:bg-card p-2 shadow-xs flex items-center justify-center self-start overflow-hidden">
             <div
-                className={cn("flex h-full w-full items-center justify-center border rounded-xs overflow-hidden", className)}
+                className={cn("flex h-full w-full items-center justify-center border border-black/30 dark:border-white/30 rounded-xs overflow-hidden", className)}
                 {...props}
             />
         </div>
