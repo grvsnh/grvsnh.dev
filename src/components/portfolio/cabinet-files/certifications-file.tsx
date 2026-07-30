@@ -2,12 +2,10 @@ import {
     FileCaption,
     FileContent,
     FileHeader,
-    FileImage,
     FileInfo,
     FileText,
     FileTitle,
 } from "../file-content";
-import purepixelImg from "@/assets/images/portfolio/purepixel.png";
 
 const CertificationsFile = () => {
     return (
@@ -15,32 +13,33 @@ const CertificationsFile = () => {
             <FileInfo>
                 <FileHeader>
                     <FileTitle>Certifications</FileTitle>
-                    <FileCaption>4 Verified</FileCaption>
+                    <FileCaption>4 Verified Certificates</FileCaption>
                 </FileHeader>
                 <FileText>
-                    <div className="grid grid-cols-2 gap-1.5 pt-1 text-xs">
-                        <div className="rounded border bg-background/60 p-1.5">
-                            <p className="font-semibold text-foreground text-[11px]">Harvard CS50</p>
-                            <p className="text-muted-foreground text-[10px] truncate">Python Programming</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-sm">Harvard CS50</p>
+                            <p className="text-muted-foreground text-xs">CS50's Introduction to Programming with Python</p>
+                            <span className="inline-block text-[10px] font-mono text-muted-foreground bg-card border border-black/10 dark:border-white/10 px-1.5 py-0.5 rounded mt-1">Harvard University</span>
                         </div>
-                        <div className="rounded border bg-background/60 p-1.5">
-                            <p className="font-semibold text-foreground text-[11px]">Deloitte Australia</p>
-                            <p className="text-muted-foreground text-[10px] truncate">Tech Simulation</p>
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-sm">Deloitte Australia</p>
+                            <p className="text-muted-foreground text-xs">Technology Consulting Virtual Internship</p>
+                            <span className="inline-block text-[10px] font-mono text-muted-foreground bg-card border border-black/10 dark:border-white/10 px-1.5 py-0.5 rounded mt-1">Forage</span>
                         </div>
-                        <div className="rounded border bg-background/60 p-1.5">
-                            <p className="font-semibold text-foreground text-[11px]">Postman</p>
-                            <p className="text-muted-foreground text-[10px] truncate">API Student Expert</p>
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-sm">Postman API Student Expert</p>
+                            <p className="text-muted-foreground text-xs">REST API Development, Testing & Authorization</p>
+                            <span className="inline-block text-[10px] font-mono text-muted-foreground bg-card border border-black/10 dark:border-white/10 px-1.5 py-0.5 rounded mt-1">Postman</span>
                         </div>
-                        <div className="rounded border bg-background/60 p-1.5">
-                            <p className="font-semibold text-foreground text-[11px]">HackerRank</p>
-                            <p className="text-muted-foreground text-[10px] truncate">Python (Basic)</p>
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-sm">HackerRank Python</p>
+                            <p className="text-muted-foreground text-xs">Python Standard Library, Syntax & Algorithms</p>
+                            <span className="inline-block text-[10px] font-mono text-muted-foreground bg-card border border-black/10 dark:border-white/10 px-1.5 py-0.5 rounded mt-1">HackerRank</span>
                         </div>
                     </div>
                 </FileText>
             </FileInfo>
-            <FileImage>
-                <img src={purepixelImg} alt="Certifications" className="h-full w-full object-cover rounded-xs" />
-            </FileImage>
         </FileContent>
     );
 };

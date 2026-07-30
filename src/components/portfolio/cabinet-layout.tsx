@@ -1,14 +1,12 @@
 import type React from "react";
+import EducationFile from "./cabinet-files/education-file";
+import CertificationsFile from "./cabinet-files/certifications-file";
 import InternshipFile from "@/components/portfolio/cabinet-files/internship-file";
-import UniversityFile from "./cabinet-files/university-file";
-import HighSchoolXIIFile from "./cabinet-files/highschool-xii-file";
-import HighSchoolXFile from "./cabinet-files/highschool-x-file";
 import SkillsFile from "./cabinet-files/skills-file";
 import AielyFile from "./cabinet-files/aiely-file";
 import BrainScanFile from "./cabinet-files/brainscan-file";
 import F1File from "./cabinet-files/f1-file";
 import PhotoBoothFile from "./cabinet-files/photobooth-file";
-import CertificationsFile from "./cabinet-files/certifications-file";
 
 export type File = {
     tabLocation: 0 | 1 | 2;
@@ -23,18 +21,8 @@ export const loremIpsum =
 const cabinetLayout: File[] = [
     {
         tabLocation: 2,
-        title: "Education - University",
-        content: <UniversityFile />,
-    },
-    {
-        tabLocation: 2,
-        title: "Education - Senior High",
-        content: <HighSchoolXIIFile />,
-    },
-    {
-        tabLocation: 2,
-        title: "Education - Secondary",
-        content: <HighSchoolXFile />,
+        title: "Education",
+        content: <EducationFile />,
     },
     {
         tabLocation: 2,

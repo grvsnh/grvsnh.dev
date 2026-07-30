@@ -1,5 +1,4 @@
-import skillCraftImg from "@/assets/images/portfolio/skill-craft.jpeg";
-import { FileCaption, FileContent, FileHeader, FileImage, FileInfo, FileText, FileTitle } from "../file-content";
+import { FileCaption, FileContent, FileHeader, FileInfo, FileText, FileTitle } from "../file-content";
 
 const SkillsFile = () => {
     return (
@@ -7,32 +6,40 @@ const SkillsFile = () => {
             <FileInfo>
                 <FileHeader>
                     <FileTitle>Technical Skills</FileTitle>
-                    <FileCaption>Full-Stack & AI</FileCaption>
+                    <FileCaption>Full-Stack & AI Engineering</FileCaption>
                 </FileHeader>
                 <FileText>
-                    <div className="grid grid-cols-1 gap-1 text-[11px] leading-tight pt-0.5">
-                        <div>
-                            <span className="font-semibold text-foreground">Languages: </span>
-                            <span className="text-muted-foreground">Python, TypeScript, JS, C++, SQL, HTML/CSS</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-xs sm:text-sm">Languages</p>
+                            <p className="text-muted-foreground text-xs leading-relaxed">
+                                Python, TypeScript, JavaScript (ES6+), C++, SQL, HTML5, CSS3
+                            </p>
                         </div>
-                        <div>
-                            <span className="font-semibold text-foreground">Frontend: </span>
-                            <span className="text-muted-foreground">React, Next.js, Electron, Three.js, GSAP, Tailwind</span>
+
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-xs sm:text-sm">Frontend & Graphics</p>
+                            <p className="text-muted-foreground text-xs leading-relaxed">
+                                React, Next.js, Electron, Three.js, GSAP, Tailwind CSS, WebGL
+                            </p>
                         </div>
-                        <div>
-                            <span className="font-semibold text-foreground">Backend & AI: </span>
-                            <span className="text-muted-foreground">Node.js, FastAPI, REST, TensorFlow.js, OpenCV</span>
+
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-xs sm:text-sm">Backend & Machine Learning</p>
+                            <p className="text-muted-foreground text-xs leading-relaxed">
+                                Node.js, Express, FastAPI, REST APIs, TensorFlow.js, OpenCV, Grad-CAM
+                            </p>
                         </div>
-                        <div>
-                            <span className="font-semibold text-foreground">Tools & DB: </span>
-                            <span className="text-muted-foreground">PostgreSQL, Redis, Docker, Git, Linux, Postman</span>
+
+                        <div className="rounded-md border border-black/20 dark:border-white/20 bg-background/60 p-3 space-y-1">
+                            <p className="font-semibold text-foreground text-xs sm:text-sm">Database & DevOps Tools</p>
+                            <p className="text-muted-foreground text-xs leading-relaxed">
+                                PostgreSQL, Redis, Docker, Git, Linux, Postman, Vite
+                            </p>
                         </div>
                     </div>
                 </FileText>
             </FileInfo>
-            <FileImage>
-                <img src={skillCraftImg} alt="Tech Stack" className="h-full w-full object-cover rounded-xs" />
-            </FileImage>
         </FileContent>
     );
 };
