@@ -80,20 +80,30 @@ const File = ({ tabLocation, title, children, index }: Props) => {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, []);
 
+    const hoverTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+
     const handlePointerEnter = () => {
-        if (!isMobile && mode === "closed") {
-            setMode("pulled");
-        }
+        if (isMobile) return;
+        if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
+
+        // 120ms hover intent delay: prevents edge jittering when cursor passes by
+        hoverTimerRef.current = setTimeout(() => {
+            setMode((prev) => (prev === "closed" ? "pulled" : prev));
+        }, 120);
     };
 
     const handlePointerLeave = () => {
-        if (!isMobile && mode === "pulled") {
-            setMode("closed");
+        if (isMobile) return;
+        if (hoverTimerRef.current) {
+            clearTimeout(hoverTimerRef.current);
+            hoverTimerRef.current = null;
         }
+        setMode((prev) => (prev === "pulled" ? "closed" : prev));
     };
 
     const handleTabClick = (e: React.MouseEvent) => {
         e.stopPropagation();
+        if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
         if (isDraggingRef.current) return;
 
         if (mode === "fullscreen") {
@@ -121,7 +131,7 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                     animate={{
                         y: isDraggingRef.current ? undefined : mode === "pulled" ? pulledY : mode === "wave" ? waveY : 0,
                     }}
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 24, mass: 0.9 }}
                     onDragStart={() => {
                         isDraggingRef.current = true;
                     }}
