@@ -30,7 +30,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-type TabMode = "closed" | "pulled" | "fullscreen";
+type TabMode = "closed" | "wave" | "pulled" | "fullscreen";
 
 const File = ({ tabLocation, title, children, index }: Props) => {
     const isMobile = useIsMobile();
@@ -42,13 +42,32 @@ const File = ({ tabLocation, title, children, index }: Props) => {
     const tabOffsetClass = TAB_OFFSETS[tabLocation] ?? TAB_OFFSETS[0];
     const dragConfig = getDragOptions(browserEngine === "chromium", isMobile);
 
-    // Pull height: more than half and less than full (~75%)
-    const pulledY = isMobile ? -180 : -260;
+    // Initial micro-wave ripple peek height (tiny fraction)
+    const waveY = isMobile ? -40 : -55;
 
-    const isPulled = mode === "pulled" || dragY < -10;
+    // Hover peek height (~half of full pull)
+    const pulledY = isMobile ? -90 : -130;
+
+    const isPulled = mode === "pulled" || mode === "wave" || dragY < -10;
 
     const rotation = isPulled ? 0 : dragConfig.rotationAngle;
     const yOffset = isPulled ? dragConfig.rotationYOffset : 0;
+
+    // Immediate micro-wave ripple animation on initial page load (no delay)
+    React.useEffect(() => {
+        const startDelay = 150 + index * 120;
+        const waveTimer = setTimeout(() => {
+            setMode((prev) => (prev === "closed" ? "wave" : prev));
+
+            const returnTimer = setTimeout(() => {
+                setMode((prev) => (prev === "wave" ? "closed" : prev));
+            }, 220);
+
+            return () => clearTimeout(returnTimer);
+        }, startDelay);
+
+        return () => clearTimeout(waveTimer);
+    }, [index]);
 
     // Global Esc key handler to close active tab
     React.useEffect(() => {
@@ -61,16 +80,26 @@ const File = ({ tabLocation, title, children, index }: Props) => {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, []);
 
+    const handlePointerEnter = () => {
+        if (!isMobile && mode === "closed") {
+            setMode("pulled");
+        }
+    };
+
+    const handlePointerLeave = () => {
+        if (!isMobile && mode === "pulled") {
+            setMode("closed");
+        }
+    };
+
     const handleTabClick = (e: React.MouseEvent) => {
         e.stopPropagation();
         if (isDraggingRef.current) return;
 
-        if (mode === "closed") {
-            setMode("pulled");
-        } else if (mode === "pulled") {
-            setMode("fullscreen");
-        } else {
+        if (mode === "fullscreen") {
             setMode("closed");
+        } else {
+            setMode("fullscreen");
         }
     };
 
@@ -90,7 +119,7 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                     }}
                     dragMomentum={dragConfig.dragMomentum}
                     animate={{
-                        y: isDraggingRef.current ? undefined : mode === "pulled" ? pulledY : 0,
+                        y: isDraggingRef.current ? undefined : mode === "pulled" ? pulledY : mode === "wave" ? waveY : 0,
                     }}
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     onDragStart={() => {
@@ -108,7 +137,7 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                     }}
                     onUpdate={(latest) => setDragY((latest.y as number) || 0)}
                     className={cn(
-                        "bg-background relative flex h-[420px] w-[720px] flex-col rounded-lg border-2 border-black dark:border-white p-6 select-text shadow-md cursor-pointer",
+                        "bg-background relative flex h-[420px] w-[720px] flex-col rounded-lg border-2 border-black dark:border-white p-6 select-text shadow-md cursor-pointer group",
                         isPulled && "scale-[112%]",
                     )}
                     style={{
@@ -117,6 +146,8 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                         rotateX: rotation,
                         transformStyle: "preserve-3d",
                     }}
+                    onPointerEnter={handlePointerEnter}
+                    onPointerLeave={handlePointerLeave}
                     onClick={handleTabClick}
                 >
                     {/* Tab handle on top */}
