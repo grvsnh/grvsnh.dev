@@ -25,10 +25,9 @@ const FileContent = ({ className, isDivider = false, children, ...props }: FileC
     return (
         <div
             className={cn(
-                "relative flex h-full gap-5 rounded-lg border border-black/30 dark:border-white/30 bg-card/40 p-4 sm:p-5 select-text overflow-hidden",
+                "relative flex flex-col sm:flex-row h-full gap-4 sm:gap-5 rounded-lg border border-black/30 dark:border-white/30 bg-card/40 p-3.5 sm:p-5 select-text overflow-y-auto min-h-0 flex-1",
                 className,
             )}
-            onPointerDownCapture={handlePointerDownCapture}
             {...props}
         >
             <div className="absolute inset-0 -z-20 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>

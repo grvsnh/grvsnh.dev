@@ -131,7 +131,7 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                             transformStyle: "preserve-3d",
                         }}
                     >
-                        <div className="relative flex h-full w-full cursor-pointer items-center justify-center select-none">
+                        <div className="relative flex h-full w-full cursor-pointer items-center justify-center select-none touch-manipulation">
                             <img
                                 src={tab}
                                 className="w-[200px] dark:invert dark:hue-rotate-180 drop-shadow-sm"
@@ -166,27 +166,27 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                                     animate={{ scale: 1, opacity: 1, y: 0 }}
                                     exit={{ scale: 0.85, opacity: 0, y: 30 }}
                                     transition={{ type: "spring", stiffness: 350, damping: 28 }}
-                                    className="relative flex flex-col items-center w-[94vw] sm:w-full max-w-4xl max-h-[82vh] sm:max-h-[90vh]"
+                                    className="relative flex flex-col items-center w-[92vw] sm:w-full max-w-4xl h-[78vh] sm:h-[86vh]"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     {/* Full Tab Handle on top */}
                                     <div
-                                        className="relative flex cursor-pointer items-center justify-center select-none mb-[-2px] z-10 self-end mr-6 sm:mr-16"
+                                        className="relative flex cursor-pointer items-center justify-center select-none mb-[-2px] z-10 self-end mr-4 sm:mr-16 shrink-0"
                                         onClick={handleCloseAll}
                                         title="Click tab to close back into cabinet"
                                     >
                                         <img
                                             src={tab}
-                                            className="w-[160px] sm:w-[220px] dark:invert dark:hue-rotate-180 drop-shadow-md"
+                                            className="w-[140px] sm:w-[220px] dark:invert dark:hue-rotate-180 drop-shadow-md"
                                             draggable={false}
                                         />
-                                        <div className="absolute flex w-[120px] sm:w-[170px] items-center justify-center text-xs sm:text-sm font-mono font-bold tracking-tight text-black dark:text-white">
+                                        <div className="absolute flex w-[110px] sm:w-[170px] items-center justify-center text-[11px] sm:text-sm font-mono font-bold tracking-tight text-black dark:text-white">
                                             <p className="truncate">{title}</p>
                                         </div>
                                     </div>
 
-                                    {/* Full File Box Container with touch scroll enabled */}
-                                    <div className="bg-background relative w-full flex flex-col rounded-xl border-2 border-black dark:border-white p-4 sm:p-8 shadow-2xl overflow-y-auto max-h-[calc(82vh-35px)] sm:max-h-[calc(90vh-45px)] touch-pan-y">
+                                    {/* Full File Box Container locked to fixed height with touch scroll enabled */}
+                                    <div className="bg-background relative w-full h-[calc(78vh-32px)] sm:h-[calc(86vh-45px)] flex flex-col rounded-xl border-2 border-black dark:border-white p-3 sm:p-8 shadow-2xl overflow-y-auto min-h-0">
                                         {children}
                                     </div>
                                 </motion.div>
