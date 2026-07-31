@@ -29,7 +29,7 @@ const PortfolioView = () => {
                     <img
                         src={characterSvg}
                         alt="Gaurav Singh"
-                        className="h-28 sm:h-36 md:h-44 w-auto"
+                        className="h-32 sm:h-40 md:h-48 lg:h-52 w-auto drop-shadow-sm"
                         draggable={false}
                     />
                 </div>
@@ -41,7 +41,7 @@ const PortfolioView = () => {
             </div>
 
             {/* Center Section: Centered Filing Cabinet */}
-            <div className="relative flex flex-1 w-full flex-col items-center justify-center py-2 my-auto">
+            <div className="relative flex flex-1 w-full flex-col items-center justify-center pt-0 pb-4 my-auto -mt-3 sm:-mt-6">
                 <div className="relative flex w-full scale-[44%] sm:scale-[60%] md:scale-[72%] lg:scale-[84%] 2xl:scale-[95%] items-center justify-center origin-center">
                     <Cabinet />
                 </div>

@@ -163,7 +163,16 @@
     }
 }
 
+@font-face {
+    font-family: "GeistPixelCircle";
+    src: url("./assets/fonts/GeistPixel-Circle.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     --font-mono: "Roboto Mono", monospace;
     --font-sans: "Inter", sans-serif;
+    --font-geist-pixel-circle: "GeistPixelCircle", sans-serif;
 }

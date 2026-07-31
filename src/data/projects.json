@@ -1,0 +1,50 @@
+[
+	{
+		"title": "Aiely",
+		"category": "Full-Stack AI",
+		"description": "Multimodal AI Workspace & Canvas for document analysis, code generation, and intelligent assistant workflows.",
+		"link": "https://github.com/grvsnh/aiely"
+	},
+	{
+		"title": "BrainScan",
+		"category": "Deep Learning",
+		"description": "Medical ML application using CNNs & Grad-CAM visual heatmaps for brain tumor detection & classification.",
+		"link": "https://grvchnx.github.io/brainscan"
+	},
+	{
+		"title": "F1 Strategy",
+		"category": "Telemetry Analytics",
+		"description": "Real-Time Formula 1 Race Strategy & Telemetry Analytics Tool using live timing data & predictive pit-stop modeling.",
+		"link": "https://github.com/grvsnh/f1-strategy-lab"
+	},
+	{
+		"title": "PhotoBooth",
+		"category": "WebGL Canvas",
+		"description": "Interactive WebGL & Canvas Virtual Photo Booth featuring real-time image filters, sticker overlays & frame exports.",
+		"link": "https://github.com/grvsnh/photobooth"
+	},
+	{
+		"title": "Pure Pixel",
+		"category": "Frontend",
+		"description": "Luxury beauty e-commerce frontend built with HTML, CSS & vanilla JavaScript featuring responsive UI, dynamic product pages, search & filtering, wishlist/cart persistence, and dark mode.",
+		"link": "https://github.com/grvsnh/PurePixel"
+	},
+	{
+		"title": "Partix",
+		"category": "Frontend",
+		"description": "Interactive 3D particle text engine built with vanilla JavaScript featuring real-time text morphing, cursor-driven physics, and high-performance WebGL-style rendering with zero dependencies.",
+		"link": "https://github.com/grvsnh/partix"
+	},
+	{
+		"title": "Image Colorization",
+		"category": "AI/ML",
+		"description": "Deep learning image colorization app featuring custom CNN and pretrained ECCV 2016 models, side-by-side result comparison, automatic model downloads, and an interactive Streamlit interface.",
+		"link": "https://github.com/grvsnh/Image-Colorization"
+	},
+	{
+		"title": "Market Strategy Simulator",
+		"category": "Data Science",
+		"description": "Interactive Streamlit dashboard for backtesting moving average and RSI strategies with historical Yahoo Finance data, performance metrics, and responsive market visualizations.",
+		"link": "https://github.com/grvsnh/market-strategy-simulator"
+	}
+]

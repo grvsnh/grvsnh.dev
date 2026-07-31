@@ -1,0 +1,18 @@
+[
+  {
+    "category": "Languages",
+    "items": "Python, TypeScript, JavaScript (ES6+), C++, SQL, HTML5, CSS3"
+  },
+  {
+    "category": "Frontend & Graphics",
+    "items": "React, Next.js, Electron, Three.js, GSAP, Tailwind CSS, WebGL"
+  },
+  {
+    "category": "Backend & Machine Learning",
+    "items": "Node.js, Express, FastAPI, REST APIs, TensorFlow.js, OpenCV, Grad-CAM"
+  },
+  {
+    "category": "Database & DevOps Tools",
+    "items": "PostgreSQL, Redis, Docker, Git, Linux, Postman, Vite"
+  }
+]

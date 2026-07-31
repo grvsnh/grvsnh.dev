@@ -1,0 +1,32 @@
+[
+	{
+		"title": "MATLAB",
+		"subtitle": "MATLAB Onramp",
+		"issuer": "MathWorks",
+		"link": "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=c2ca8095-1bdd-4853-843b-7fdb9872593e&"
+	},
+	{
+		"title": "Harvard CS50",
+		"subtitle": "CS50's Introduction to Programming with Python",
+		"issuer": "Harvard University",
+		"link": "https://certificates.cs50.io/95ceab5a-4fe3-4405-be5f-954b64329477.pdf?size=letter"
+	},
+	{
+		"title": "Deloitte Australia",
+		"subtitle": "Technology Consulting Virtual Internship",
+		"issuer": "Forage",
+		"link": "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/udmxiyHeqYQLkTPvf_9PBTqmSxAf6zZTseP_29B4EFutbFK7NPHvG_1751397174377_completion_certificate.pdf"
+	},
+	{
+		"title": "Postman API Student Expert",
+		"subtitle": "REST API Development, Testing & Authorization",
+		"issuer": "Postman",
+		"link": "https://badges.parchment.com/public/assertions/39LIJ3fzRhyaa-Z0t2jYqQ"
+	},
+	{
+		"title": "HackerRank Python",
+		"subtitle": "Python Standard Library, Syntax & Algorithms",
+		"issuer": "HackerRank",
+		"link": "https://www.hackerrank.com/certificates/e6e9f244bd76"
+	}
+]

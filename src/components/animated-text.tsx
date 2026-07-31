@@ -57,12 +57,12 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ className }) => {
                     Hello, my name is
                 </p>
 
-                {/* Line 2: GAURAV SINGH (Bigger font, NO underline, animates only when hovering Line 2) */}
+                {/* Line 2: GAURAV SINGH (Geist Pixel Circle font, size ~90, normal letter spacing) */}
                 <h1
                     ref={p2Ref}
                     onPointerEnter={() => scrambleLine(p2Ref.current)}
                     onPointerDown={() => scrambleLine(p2Ref.current)}
-                    className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider uppercase text-foreground cursor-pointer select-none"
+                    className="font-['GeistPixelCircle',sans-serif] text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-none tracking-normal uppercase text-foreground cursor-pointer select-none py-1"
                 >
                     GAURAV SINGH
                 </h1>

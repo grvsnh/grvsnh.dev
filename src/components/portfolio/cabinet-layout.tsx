@@ -1,7 +1,7 @@
 import type React from "react";
 import EducationFile from "./cabinet-files/education-file";
 import CertificationsFile from "./cabinet-files/certifications-file";
-import InternshipFile from "@/components/portfolio/cabinet-files/internship-file";
+import ExperienceFile from "./cabinet-files/experience-file";
 import SkillsFile from "./cabinet-files/skills-file";
 import ProjectsFile from "./cabinet-files/projects-file";
 
@@ -29,7 +29,7 @@ const cabinetLayout: File[] = [
     {
         tabLocation: 2,
         title: "Experience",
-        content: <InternshipFile />,
+        content: <ExperienceFile />,
     },
     {
         tabLocation: 2,

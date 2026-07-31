@@ -1,0 +1,20 @@
+[
+  {
+    "degree": "B.E. in Computer Science & Engineering",
+    "institution": "Visvesvaraya Technological University • Bangalore",
+    "period": "2023 – 2027",
+    "details": "Core Focus: Data Structures, Operating Systems, Distributed Systems, AI & Database Architecture."
+  },
+  {
+    "degree": "Senior High School (Class XII — AISSCE)",
+    "institution": "Army Public School PRTC • Bangalore",
+    "period": "2020 – 2022",
+    "details": "CBSE Board • Physics, Chemistry, Mathematics, Computer Science."
+  },
+  {
+    "degree": "Secondary School (Class X — AISSE)",
+    "institution": "Army Public School • India",
+    "period": "2018 – 2020",
+    "details": "CBSE Board • Science, Mathematics, Social Sciences & Computing."
+  }
+]
