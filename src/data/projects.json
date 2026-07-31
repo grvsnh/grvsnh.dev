@@ -3,48 +3,56 @@
 		"title": "Aiely",
 		"category": "Full-Stack AI",
 		"description": "Multimodal AI Workspace & Canvas for document analysis, code generation, and intelligent assistant workflows.",
-		"link": "https://github.com/grvsnh/aiely"
+		"link": "https://github.com/grvsnh/aiely",
+		"image": "aiely.png"
 	},
 	{
 		"title": "BrainScan",
 		"category": "Deep Learning",
 		"description": "Medical ML application using CNNs & Grad-CAM visual heatmaps for brain tumor detection & classification.",
-		"link": "https://grvchnx.github.io/brainscan"
+		"link": "https://grvchnx.github.io/brainscan",
+		"image": "brainscan.png"
 	},
 	{
 		"title": "F1 Strategy",
 		"category": "Telemetry Analytics",
 		"description": "Real-Time Formula 1 Race Strategy & Telemetry Analytics Tool using live timing data & predictive pit-stop modeling.",
-		"link": "https://github.com/grvsnh/f1-strategy-lab"
+		"link": "https://github.com/grvsnh/f1-strategy-lab",
+		"image": "f1-strategy.png"
 	},
 	{
 		"title": "PhotoBooth",
 		"category": "WebGL Canvas",
 		"description": "Interactive WebGL & Canvas Virtual Photo Booth featuring real-time image filters, sticker overlays & frame exports.",
-		"link": "https://github.com/grvsnh/photobooth"
+		"link": "https://github.com/grvsnh/photobooth",
+		"image": "photobooth.png"
 	},
 	{
 		"title": "Pure Pixel",
 		"category": "Frontend",
 		"description": "Luxury beauty e-commerce frontend built with HTML, CSS & vanilla JavaScript featuring responsive UI, dynamic product pages, search & filtering, wishlist/cart persistence, and dark mode.",
-		"link": "https://github.com/grvsnh/PurePixel"
+		"link": "https://github.com/grvsnh/PurePixel",
+		"image": "purepixel.png"
 	},
 	{
 		"title": "Partix",
 		"category": "Frontend",
 		"description": "Interactive 3D particle text engine built with vanilla JavaScript featuring real-time text morphing, cursor-driven physics, and high-performance WebGL-style rendering with zero dependencies.",
-		"link": "https://github.com/grvsnh/partix"
+		"link": "https://github.com/grvsnh/partix",
+		"image": "partix.png"
 	},
 	{
 		"title": "Image Colorization",
 		"category": "AI/ML",
 		"description": "Deep learning image colorization app featuring custom CNN and pretrained ECCV 2016 models, side-by-side result comparison, automatic model downloads, and an interactive Streamlit interface.",
-		"link": "https://github.com/grvsnh/Image-Colorization"
+		"link": "https://github.com/grvsnh/Image-Colorization",
+		"image": "img-colour.png"
 	},
 	{
 		"title": "Market Strategy Simulator",
 		"category": "Data Science",
 		"description": "Interactive Streamlit dashboard for backtesting moving average and RSI strategies with historical Yahoo Finance data, performance metrics, and responsive market visualizations.",
-		"link": "https://github.com/grvsnh/market-strategy-simulator"
+		"link": "https://github.com/grvsnh/market-strategy-simulator",
+		"image": "market.png"
 	}
 ]
