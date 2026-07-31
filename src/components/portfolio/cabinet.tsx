@@ -2,8 +2,13 @@ import { motion } from "motion/react";
 import File from "./file";
 import cabinetLayout from "./cabinet-layout";
 import cabinetImg from "@/assets/images/cabinet/cabinet.png";
+import cabinetMobileImg from "@/assets/images/cabinet/cabinet-mobile.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Cabinet = () => {
+    const isMobile = useIsMobile();
+    const currentCabinetImg = isMobile ? cabinetMobileImg : cabinetImg;
+
     return (
         <>
             <motion.div className="flex flex-col items-center space-y-[-366px] px-16 [clip-path:inset(-1000px_0_360px_0)] md:pt-[30vh]">
@@ -34,7 +39,7 @@ const Cabinet = () => {
                     </div>
                     <div className="w-[930px]">
                         <img
-                            src={cabinetImg}
+                            src={currentCabinetImg}
                             className="h-auto w-full select-none dark:invert dark:hue-rotate-180"
                             draggable={false}
                         />
