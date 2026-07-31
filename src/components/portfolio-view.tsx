@@ -41,8 +41,8 @@ const PortfolioView = () => {
             </div>
 
             {/* Center Section: Centered Filing Cabinet */}
-            <div className="relative flex flex-1 w-full flex-col items-center justify-center pt-0 pb-4 my-auto -mt-3 sm:-mt-6">
-                <div className="relative flex w-full scale-[44%] sm:scale-[60%] md:scale-[72%] lg:scale-[84%] 2xl:scale-[95%] items-center justify-center origin-center">
+            <div className="relative flex flex-1 w-full flex-col items-center justify-center pt-0 pb-6 my-auto -mt-6 sm:-mt-12 md:-mt-16">
+                <div className="relative flex w-full scale-[40%] sm:scale-[55%] md:scale-[68%] lg:scale-[80%] 2xl:scale-[90%] items-center justify-center origin-center">
                     <Cabinet />
                 </div>
             </div>
