@@ -5,6 +5,8 @@ import cabinetImg from "@/assets/images/cabinet/cabinet.png";
 import cabinetMobileImg from "@/assets/images/cabinet/cabinet-mobile.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+import { cn } from "@/lib/utils";
+
 const Cabinet = () => {
     const isMobile = useIsMobile();
     const currentCabinetImg = isMobile ? cabinetMobileImg : cabinetImg;
@@ -44,7 +46,7 @@ const Cabinet = () => {
                             draggable={false}
                         />
                     </div>
-                    <div className="absolute top-14 font-mono text-base font-semibold text-foreground">
+                    <div className={cn("absolute font-mono text-foreground select-none pointer-events-none tracking-tight flex items-center justify-center", isMobile ? "top-[50px] text-sm font-bold" : "top-14 text-base font-semibold")}>
                         Gaurav Singh
                     </div>
                 </div>
