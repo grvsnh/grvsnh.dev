@@ -10,7 +10,6 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ className }) => {
     const topRef = useRef<HTMLDivElement>(null);
     const p1Ref = useRef<HTMLParagraphElement>(null);
     const p2Ref = useRef<HTMLHeadingElement>(null);
-    const p3Ref = useRef<HTMLParagraphElement>(null);
 
     const scrambleLine = (el: HTMLElement | null) => {
         if (!el) return;
@@ -31,53 +30,70 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ className }) => {
         scrambleLine(topRef.current);
         scrambleLine(p1Ref.current);
         scrambleLine(p2Ref.current);
-        scrambleLine(p3Ref.current);
     }, []);
 
     return (
         <div className={className}>
-            {/* Top Tag Line: Full Stack and AI Engineer • Bangalore, India (Animates on hover) */}
+            {/* Top Tag Line: Full Stack and AI Engineer • Bangalore, India */}
             <div
                 ref={topRef}
                 onPointerEnter={() => scrambleLine(topRef.current)}
                 onPointerDown={() => scrambleLine(topRef.current)}
-                className="text-xs text-muted-foreground uppercase font-semibold tracking-wider mb-2 cursor-pointer select-none"
+                className="text-xs sm:text-sm text-muted-foreground uppercase font-mono font-semibold tracking-wider mb-1.5 cursor-pointer select-none"
             >
                 Full Stack and AI Engineer • Bangalore, India
             </div>
 
-            <div className="space-y-1.5 font-mono">
-                {/* Line 1: Animates only when hovering Line 1 */}
+            <div className="space-y-1 font-mono">
+                {/* Line 1: Hello, my name is */}
                 <p
                     ref={p1Ref}
                     onPointerEnter={() => scrambleLine(p1Ref.current)}
                     onPointerDown={() => scrambleLine(p1Ref.current)}
-                    className="text-sm sm:text-base md:text-lg font-normal text-muted-foreground cursor-pointer select-none"
+                    className="text-lg sm:text-2xl md:text-3xl font-normal text-muted-foreground cursor-pointer select-none"
                 >
                     Hello, my name is
                 </p>
 
-                {/* Line 2: GAURAV SINGH (Geist Pixel Circle font, size ~90, normal letter spacing) */}
+                {/* Line 2: Gaurav Singh (Sentence Case, single-line fit with increased size) */}
                 <h1
                     ref={p2Ref}
                     onPointerEnter={() => scrambleLine(p2Ref.current)}
                     onPointerDown={() => scrambleLine(p2Ref.current)}
-                    className="font-['GeistPixelCircle',sans-serif] text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-none tracking-normal uppercase text-foreground cursor-pointer select-none py-1"
+                    className="font-['GeistPixelCircle',sans-serif] text-[2.15rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-none tracking-normal whitespace-nowrap text-foreground cursor-pointer select-none py-1"
                 >
-                    GAURAV SINGH
+                    Gaurav Singh
                 </h1>
-
-                {/* Line 3: Animates only when hovering Line 3 */}
-                <p
-                    ref={p3Ref}
-                    onPointerEnter={() => scrambleLine(p3Ref.current)}
-                    onPointerDown={() => scrambleLine(p3Ref.current)}
-                    className="text-sm sm:text-base md:text-lg leading-relaxed font-normal text-foreground pt-1 cursor-pointer select-none"
-                >
-                    I am a Full Stack and AI Software Engineer based in Bangalore, India, specializing in Distributed Systems and Machine Learning.
-                </p>
             </div>
         </div>
+    );
+};
+
+export const AnimatedBio: React.FC = () => {
+    const bioRef = useRef<HTMLParagraphElement>(null);
+
+    // Initial page load scramble animation ONLY (no hover scramble)
+    useEffect(() => {
+        if (!bioRef.current) return;
+        animate(bioRef.current, {
+            innerHTML: scrambleText({
+                ease: "outExpo",
+                override: false,
+                duration: 600,
+                cursor: "░▒▓█",
+            }),
+            opacity: [0, 1],
+            duration: 600,
+        });
+    }, []);
+
+    return (
+        <p
+            ref={bioRef}
+            className="font-mono text-xs sm:text-sm md:text-base leading-relaxed text-foreground/90 max-w-3xl pt-1 select-none"
+        >
+            I am a Full Stack and AI Software Engineer based in Bangalore, India, specializing in Distributed Systems and Machine Learning.
+        </p>
     );
 };
 

@@ -4,7 +4,6 @@ import cabinetLayout from "./cabinet-layout";
 import cabinetImg from "@/assets/images/cabinet/cabinet.png";
 import cabinetMobileImg from "@/assets/images/cabinet/cabinet-mobile.png";
 import { useIsMobile } from "@/hooks/use-mobile";
-
 import { cn } from "@/lib/utils";
 
 const Cabinet = () => {

@@ -6,7 +6,7 @@ import { useImagePreloader } from "@/hooks/use-image-preloader";
 import { Loader2 } from "lucide-react";
 import { useMemo } from "react";
 import Cabinet from "./portfolio/cabinet";
-import AnimatedText from "./animated-text";
+import AnimatedText, { AnimatedBio } from "./animated-text";
 
 const PortfolioView = () => {
     const imageUrls = useMemo(() => [cabinet, cabinetMobile, tab], []);
@@ -21,28 +21,33 @@ const PortfolioView = () => {
     }
 
     return (
-        <section className="relative flex h-[calc(100vh-8rem)] w-full flex-col justify-between overflow-hidden px-4 sm:px-8 select-none">
-            {/* Top Row: Character SVG on Left + Anime.js Text Scramble Bio on Right */}
-            <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-6 sm:gap-10 pt-2 z-10">
-                {/* Character SVG on Left */}
-                <div className="flex-shrink-0 flex items-center justify-center">
-                    <img
-                        src={characterSvg}
-                        alt="Gaurav Singh"
-                        className="h-32 sm:h-40 md:h-48 lg:h-52 w-auto drop-shadow-sm"
-                        draggable={false}
-                    />
+        <section className="relative flex h-[calc(100vh-8rem)] w-full flex-col justify-between overflow-hidden px-6 sm:px-10 select-none">
+            {/* Top Row: Character SVG on Left + Intro Title on Right */}
+            <div className="mx-auto flex w-full max-w-4xl flex-col gap-3 pt-1 z-10">
+                <div className="flex items-center justify-between gap-6 sm:gap-8">
+                    {/* Character SVG Avatar */}
+                    <div className="flex-shrink-0 flex items-center justify-center">
+                        <img
+                            src={characterSvg}
+                            alt="Gaurav Singh"
+                            className="h-28 sm:h-48 md:h-56 lg:h-60 w-auto drop-shadow-sm"
+                            draggable={false}
+                        />
+                    </div>
+
+                    {/* Anime.js Animated Header */}
+                    <div className="flex-1 min-w-0">
+                        <AnimatedText />
+                    </div>
                 </div>
 
-                {/* Anime.js Text Scramble Bio Text on Right */}
-                <div className="flex-1 font-mono tracking-tight text-foreground space-y-2">
-                    <AnimatedText className="min-h-[5rem]" />
-                </div>
+                {/* Bio text starting below character SVG */}
+                <AnimatedBio />
             </div>
 
-            {/* Center Section: Centered Filing Cabinet */}
-            <div className="relative flex flex-1 w-full flex-col items-center justify-center pt-0 pb-2 my-auto -mt-12 sm:-mt-20 md:-mt-24 lg:-mt-28">
-                <div className="relative flex w-full scale-[46%] sm:scale-[58%] md:scale-[70%] lg:scale-[82%] 2xl:scale-[90%] items-center justify-center origin-center">
+            {/* Center Section: Centered 3D Filing Cabinet */}
+            <div className="relative flex flex-1 w-full flex-col items-center justify-center pt-0 pb-2 my-auto -mt-14 sm:-mt-20 md:-mt-24 lg:-mt-28">
+                <div className="relative flex w-full scale-[43%] sm:scale-[64%] md:scale-[74%] lg:scale-[84%] 2xl:scale-[92%] items-center justify-center origin-center">
                     <Cabinet />
                 </div>
             </div>

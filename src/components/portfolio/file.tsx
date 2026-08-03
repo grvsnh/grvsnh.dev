@@ -19,7 +19,7 @@ const getDragOptions = (isChromium: boolean, isMobile: boolean) => ({
     dragSpeedMultiplier: isMobile ? 1.5 : 1,
 });
 
-const TAB_OFFSETS = ["left-[60px]", "left-[250px]", "left-[440px]"];
+const TAB_OFFSETS_DESKTOP = ["left-[60px]", "left-[250px]", "left-[440px]"];
 
 type Props = {
     tabLocation: 0 | 1 | 2;
@@ -39,14 +39,16 @@ const File = ({ tabLocation, title, children, index }: Props) => {
     const [mode, setMode] = React.useState<TabMode>("closed");
     const isDraggingRef = React.useRef(false);
 
-    const tabOffsetClass = TAB_OFFSETS[tabLocation] ?? TAB_OFFSETS[0];
+    const tabOffsetClass = isMobile
+        ? "right-6"
+        : (TAB_OFFSETS_DESKTOP[tabLocation] ?? TAB_OFFSETS_DESKTOP[0]);
     const dragConfig = getDragOptions(browserEngine === "chromium", isMobile);
 
     // Initial micro-wave ripple peek height (tiny fraction)
-    const waveY = isMobile ? -40 : -55;
+    const waveY = isMobile ? -45 : -55;
 
-    // Hover peek height (~half of full pull)
-    const pulledY = isMobile ? -90 : -130;
+    // Pull height for 3D drawer
+    const pulledY = isMobile ? -140 : -130;
 
     const isPulled = mode === "pulled" || mode === "wave" || dragY < -10;
 
@@ -81,24 +83,49 @@ const File = ({ tabLocation, title, children, index }: Props) => {
     }, []);
 
     const hoverTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+    const lastHoverTimeRef = React.useRef(0);
+    const isFirefox = typeof navigator !== "undefined" && /firefox/i.test(navigator.userAgent);
 
     const handlePointerEnter = () => {
         if (isMobile) return;
+        const now = Date.now();
+        if (isFirefox && now - lastHoverTimeRef.current < 350) return;
+        lastHoverTimeRef.current = now;
+
         if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
 
-        // 120ms hover intent delay: prevents edge jittering when cursor passes by
         hoverTimerRef.current = setTimeout(() => {
             setMode((prev) => (prev === "closed" ? "pulled" : prev));
-        }, 120);
+        }, isFirefox ? 120 : 80);
     };
 
     const handlePointerLeave = () => {
         if (isMobile) return;
+        const now = Date.now();
+        if (isFirefox && now - lastHoverTimeRef.current < 350) {
+            setTimeout(() => {
+                setMode((prev) => (prev === "pulled" ? "closed" : prev));
+            }, 350 - (now - lastHoverTimeRef.current));
+            return;
+        }
+
         if (hoverTimerRef.current) {
             clearTimeout(hoverTimerRef.current);
             hoverTimerRef.current = null;
         }
         setMode((prev) => (prev === "pulled" ? "closed" : prev));
+    };
+
+    const handleCloseAll = () => {
+        if (mode === "fullscreen") {
+            // First transition to pulled state so modal exits with drawer visible in pulled state
+            setMode("pulled");
+            setTimeout(() => {
+                setMode("closed");
+            }, 120);
+        } else {
+            setMode("closed");
+        }
     };
 
     const handleTabClick = (e: React.MouseEvent) => {
@@ -107,21 +134,17 @@ const File = ({ tabLocation, title, children, index }: Props) => {
         if (isDraggingRef.current) return;
 
         if (mode === "fullscreen") {
-            setMode("closed");
+            handleCloseAll();
         } else {
             setMode("fullscreen");
         }
     };
 
-    const handleCloseAll = () => {
-        setMode("closed");
-    };
-
     return (
         <>
-            <div className="perspective-[1000px]">
+            <div className="perspective-[1000px] relative">
                 <motion.div
-                    drag="y"
+                    drag={isMobile ? false : "y"}
                     dragConstraints={{ top: pulledY, bottom: 0 }}
                     dragElastic={dragConfig.dragElastic}
                     dragTransition={{
@@ -129,9 +152,9 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                     }}
                     dragMomentum={dragConfig.dragMomentum}
                     animate={{
-                        y: isDraggingRef.current ? undefined : mode === "pulled" ? pulledY : mode === "wave" ? waveY : 0,
+                        y: isDraggingRef.current ? undefined : mode === "pulled" || mode === "fullscreen" ? pulledY : mode === "wave" ? waveY : 0,
                     }}
-                    transition={{ type: "spring", stiffness: 180, damping: 24, mass: 0.9 }}
+                    transition={{ type: "spring", stiffness: 220, damping: 24, mass: 0.85 }}
                     onDragStart={() => {
                         isDraggingRef.current = true;
                     }}
@@ -156,14 +179,12 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                         rotateX: rotation,
                         transformStyle: "preserve-3d",
                     }}
-                    onPointerEnter={handlePointerEnter}
-                    onPointerLeave={handlePointerLeave}
                     onClick={handleTabClick}
                 >
-                    {/* Tab handle on top */}
+                    {/* Responsive Tab handle: Staggered on Desktop, Right-aligned on Mobile */}
                     <motion.div
                         className={cn(
-                            "absolute -top-[37.5px]",
+                            "absolute -top-[40px] sm:-top-[44px]",
                             tabOffsetClass,
                             isPulled && "pt-[2.5px]",
                         )}
@@ -171,22 +192,24 @@ const File = ({ tabLocation, title, children, index }: Props) => {
                             rotateX: -rotation,
                             transformStyle: "preserve-3d",
                         }}
+                        onPointerEnter={handlePointerEnter}
+                        onPointerLeave={handlePointerLeave}
                     >
                         <div className="relative flex h-full w-full cursor-pointer items-center justify-center select-none touch-manipulation">
                             <img
                                 src={tab}
-                                className="w-[200px] dark:invert dark:hue-rotate-180 drop-shadow-sm"
+                                className="w-[260px] sm:w-[240px] dark:invert dark:hue-rotate-180 drop-shadow-md"
                                 draggable={false}
                             />
                             <div
-                                className="absolute flex w-[155px] items-center text-xs sm:text-[0.875rem] tracking-tight justify-center text-black dark:text-white font-mono font-bold"
+                                className="absolute flex w-[205px] sm:w-[190px] items-center text-xs sm:text-base tracking-tight justify-center text-black dark:text-white font-mono font-bold"
                             >
                                 <p className="truncate">{title}</p>
                             </div>
                         </div>
                     </motion.div>
 
-                    {children}
+                    <div className="flex-1 flex flex-col">{children}</div>
                 </motion.div>
             </div>
 
